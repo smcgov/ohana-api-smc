@@ -3,7 +3,7 @@ GIT
   revision: cd96089a56b97cd11f7502826636895253eca27d
   specs:
     shoulda-matchers (3.1.2)
-      activesupport (>= 4.2.0)
+      activesupport (>= 4.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -259,11 +259,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.4)
     railties (5.1.5)
       actionpack (= 5.1.5)
       activesupport (= 5.1.5)
@@ -336,8 +331,6 @@ GEM
     sentry-raven (2.7.2)
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.10.1)
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.0.0)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -426,7 +419,6 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 5.1.5)
   rails-controller-testing
-  rails_12factor
   readthis
   redis
   reek
