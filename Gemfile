@@ -31,7 +31,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :production do
   gem 'puma'
-  gem 'rails_12factor'
 end
 
 group :test, :development do
