@@ -27,6 +27,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'scout_apm'
 gem 'select2-rails', '~> 3.5'
 gem 'sentry-raven'
+gem 'skylight'
 gem 'uglifier', '>= 1.3.0'
 
 group :production do
