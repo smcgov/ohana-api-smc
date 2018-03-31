@@ -115,8 +115,8 @@ describe 'GET /organizations/:organization_id/locations' do
       expect(json.first.keys).to_not include('transportation')
     end
 
-    it 'does not include the location website attribute' do
-      expect(json.first.keys).to_not include('website')
+    it 'includes the location website attribute' do
+      expect(json.first.keys).to include('website')
     end
 
     it "doesn't include the location contacts attribute" do
