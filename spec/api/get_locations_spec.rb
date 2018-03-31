@@ -114,8 +114,8 @@ describe 'GET /locations' do
       expect(json.first.keys).to_not include('transportation')
     end
 
-    it 'does not include the website attribute' do
-      expect(json.first.keys).to_not include('website')
+    it 'includes the website attribute' do
+      expect(json.first.keys).to include('website')
     end
 
     it 'includes the address association' do
