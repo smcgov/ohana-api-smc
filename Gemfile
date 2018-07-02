@@ -17,6 +17,7 @@ gem 'hiredis'
 gem 'jquery-rails', '~> 4.0'
 gem 'kaminari', '~> 1.1'
 gem 'pg'
+gem 'puma'
 gem 'pundit'
 gem 'rabl'
 gem 'rack-cors', require: 'rack/cors'
@@ -29,10 +30,6 @@ gem 'select2-rails', '~> 3.5'
 gem 'sentry-raven'
 gem 'skylight'
 gem 'uglifier', '>= 1.3.0'
-
-group :production do
-  gem 'puma'
-end
 
 group :test, :development do
   gem 'bullet'
