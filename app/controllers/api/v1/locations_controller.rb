@@ -14,7 +14,7 @@ module Api
         @locations = Location.includes(tables).paginated_and_sorted(params)
 
         respond_to do |format|
-          format.json { render json: @locations, each_serializer: LocationsSerializer, status: 200 }
+          format.json { render json: @locations, each_serializer: LocationsSerializer, status: :ok }
           format.xml { respond_with @locations }
         end
 
@@ -24,13 +24,13 @@ module Api
       def show
         location = Location.includes(show_tables).find(params[:id])
 
-        render json: location, status: 200 if stale?(location, public: true)
+        render json: location, status: :ok if stale?(location, public: true)
       end
 
       def update
         location = Location.find(params[:id])
         location.update!(location_params)
-        render json: location, status: 200
+        render json: location, status: :ok
       end
 
       def create
@@ -41,7 +41,7 @@ module Api
           name: location.name,
           slug: location.slug
         }
-        render json: response_hash, status: 201, location: [:api, location]
+        render json: response_hash, status: :created, location: [:api, location]
       end
 
       def destroy
@@ -67,7 +67,7 @@ module Api
           {
             contacts: :phones,
             services: %i[categories contacts phones regular_schedules holiday_schedules]
-          }
+          },
         ]
       end
 

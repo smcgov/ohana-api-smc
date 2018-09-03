@@ -17,6 +17,6 @@ Geocoder.configure(
     Geocoder::OverQueryLimitError,
     Geocoder::RequestDenied,
     Geocoder::InvalidRequest,
-    Geocoder::InvalidApiKey
+    Geocoder::InvalidApiKey,
   ]
 )

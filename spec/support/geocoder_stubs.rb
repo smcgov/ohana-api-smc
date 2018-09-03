@@ -9,7 +9,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -22,7 +22,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -35,7 +35,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -48,7 +48,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -61,7 +61,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -74,7 +74,7 @@ Geocoder::Lookup::Test.add_stub(
       'state_code'   => 'CA',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )
 
@@ -95,6 +95,6 @@ Geocoder::Lookup::Test.set_default_stub(
       'state_code'   => 'NY',
       'country'      => 'United States',
       'country_code' => 'US'
-    }
+    },
   ]
 )

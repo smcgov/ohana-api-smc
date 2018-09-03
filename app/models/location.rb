@@ -84,7 +84,7 @@ class Location < ApplicationRecord
     [
       :name,
       %i[name address_street],
-      %i[name mail_address_city]
+      %i[name mail_address_city],
     ]
   end
 

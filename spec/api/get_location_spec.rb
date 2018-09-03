@@ -124,7 +124,7 @@ describe 'GET /locations/:id' do
               'weekday' => 7,
               'opens_at'  => '2000-01-01T09:30:00.000Z',
               'closes_at' => '2000-01-01T17:00:00.000Z'
-            }
+            },
           ],
           'holiday_schedules' => [
             {
@@ -133,7 +133,7 @@ describe 'GET /locations/:id' do
               'end_date'   => '2014-12-24',
               'opens_at'   => nil,
               'closes_at'  => nil
-            }
+            },
           ]
         }]
 
@@ -349,7 +349,7 @@ describe 'GET /locations/:id' do
           'taxonomy_id' => '102-01',
           'name' => 'Orthodontics',
           'parent_id' => @health.id
-        }
+        },
       ]
 
       expect(json['services'].first['categories']).to eq(categories)
