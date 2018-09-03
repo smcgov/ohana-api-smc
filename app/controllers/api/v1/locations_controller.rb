@@ -67,7 +67,7 @@ module Api
           {
             contacts: :phones,
             services: %i[categories contacts phones regular_schedules holiday_schedules]
-          },
+          }
         ]
       end
 
