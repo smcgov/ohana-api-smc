@@ -15,6 +15,7 @@ NestedIterators:
 NilCheck:
   exclude:
     - ConfigValidator#required_keys_with_empty_values
+    - RegexValidator#regex_validate_each
 TooManyMethods:
   exclude:
     - Admin::CsvController

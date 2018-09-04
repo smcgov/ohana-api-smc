@@ -22,7 +22,7 @@ describe 'PATCH /locations/:id)' do
       short_desc: 'short description',
       transportation: 'BART stop 1 block away.',
       website: 'https://www.example.com',
-      virtual: true,
+      virtual: true
     }
   end
 

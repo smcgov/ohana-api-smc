@@ -46,6 +46,7 @@ group :test do
   gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem 'simplecov', require: false
   gem 'webmock'

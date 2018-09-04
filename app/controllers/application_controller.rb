@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
         'message' => 'The requested resource could not be found.',
         'documentation_url' => 'http://codeforamerica.github.io/ohana-api-docs/'
       }
-    render json: hash, status: 404
+    render json: hash, status: :not_found
   end
 
   def user_not_authorized
