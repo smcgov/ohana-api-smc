@@ -11,7 +11,7 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'db/migrate/*'
   TargetRailsVersion: 5.1
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
   UseCache: true
 
 Metrics/AbcSize:
@@ -96,6 +96,7 @@ Rails/LexicallyScopedActionFilter:
 
 Rails/SkipsModelValidations:
   Exclude:
+    - app/models/service.rb
     - 'spec/models/*'
 
 Rails/TimeZone:

@@ -38,6 +38,7 @@ describe 'PATCH /locations/:id)' do
     expect(json['kind']).to eq "Farmers' Markets"
     attributes.each do |key, value|
       next if %i[accessibility address_attributes importance kind virtual].include?(key)
+
       expect(json[key.to_s]).to eq value
     end
     expect(@loc.reload.importance).to eq 1
