@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def render_not_found
     hash =
       {
-        'status'  => 404,
+        'status' => 404,
         'message' => 'The requested resource could not be found.',
         'documentation_url' => 'http://codeforamerica.github.io/ohana-api-docs/'
       }
@@ -52,6 +52,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     return 'application' unless devise_controller? && resource_name == :admin
+
     'admin'
   end
 end

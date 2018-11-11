@@ -53,20 +53,17 @@ class Service < ApplicationRecord
 
   private
 
-  # rubocop:disable Rails/SkipsModelValidations
   def update_location_status
     return if location.active == location_services_active?
+
     location.update_columns(active: location_services_active?)
   end
-  # rubocop:enable Rails/SkipsModelValidations
 
   def location_services_active?
     location.services.pluck(:status).include?('active')
   end
 
-  # rubocop:disable Rails/SkipsModelValidations
   def touch_location(_category)
     location.update_column(:updated_at, Time.zone.now) if persisted?
   end
-  # rubocop:enable Rails/SkipsModelValidations
 end

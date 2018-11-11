@@ -54,6 +54,7 @@ module Api
 
       def tables
         return %i[organization address phones] unless request.format == Mime[:xml]
+
         [:address, :mail_address, :services, :organization,
          { contacts: :phones, services: common_tables }] + common_tables
       end
