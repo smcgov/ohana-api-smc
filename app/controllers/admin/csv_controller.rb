@@ -31,7 +31,8 @@ class Admin
         flash[:error] = t('devise.failure.unauthenticated')
         return redirect_to new_admin_session_url
       end
-      user_not_authorized unless current_admin.super_admin?
+      csv_policy = Admin::CsvPolicy.new(admin: current_admin)
+      user_not_authorized unless csv_policy.authorized_to_download_csv_files?
     end
   end
 end

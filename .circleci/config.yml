@@ -12,13 +12,6 @@ jobs:
           RAILS_ENV: test
           CC_TEST_REPORTER_ID: 3a5ce4d68f640cd835334e1c239df8c4875d691cac58bb34197cb370604fa624
           COVERAGE: true
-          ADMIN_APP_TOKEN: testing123
-          API_PATH: api
-          ADMIN_PATH: admin
-          ASSET_HOST: example.com
-          DEFAULT_PER_PAGE: 30
-          DOMAIN_NAME: example.com
-          MAX_PER_PAGE: 50
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -68,6 +61,7 @@ jobs:
       - run:
           name: Test Setup
           command: |
+            cp config/application.example.yml config/application.yml
             psql -U circleci -q -d ohana_api_smc_test -f db/structure.sql -h localhost -p 5432
             bundle exec rake assets:precompile
 
