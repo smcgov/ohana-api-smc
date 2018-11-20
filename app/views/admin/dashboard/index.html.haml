@@ -17,7 +17,7 @@
     %p
       = link_to t('admin.buttons.add_program'), new_admin_program_path, class: 'btn btn-primary'
 
-  - if current_admin.super_admin?
+  - if @csv_access
     %h2 CSV Downloads
     - csv_tables.each do |table|
       %p

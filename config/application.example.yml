@@ -244,6 +244,7 @@ test:
   ADMIN_SUBDOMAIN:
   ADMIN_PATH: admin
   ASSET_HOST: example.com
+  CSV_ACCESS_LIST: moncef@smcgov.org
   DEV_SUBDOMAIN:
   DEFAULT_PER_PAGE: '30'
   DOMAIN_NAME: example.com

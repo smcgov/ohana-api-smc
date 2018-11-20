@@ -43,5 +43,19 @@ describe Admin::CsvController do
         expect(response.status).to eq 200
       end
     end
+
+    it 'allows access if signed in as a special guest' do
+      log_in_as_admin(:location_admin)
+
+      actions = %i[
+        addresses contacts holiday_schedules locations mail_addresses
+        organizations phones programs regular_schedules services
+      ]
+      actions.each do |action|
+        get action, format: :csv
+
+        expect(response.status).to eq 200
+      end
+    end
   end
 end

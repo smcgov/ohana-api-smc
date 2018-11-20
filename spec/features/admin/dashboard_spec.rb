@@ -199,6 +199,26 @@ feature 'Admin Home page' do
     end
   end
 
+  context 'when signed in as special guest and orgs exist' do
+    before :each do
+      create(:organization)
+      admin = create(:location_admin)
+      login_as_admin(admin)
+      visit '/admin'
+    end
+
+    it 'displays link to download all tables as CSV files' do
+      expect(page).to have_content 'CSV Downloads'
+
+      tables = %w[addresses contacts holiday_schedules locations mail_addresses
+                  organizations phones programs regular_schedules services]
+      tables.each do |table|
+        expect(page).
+          to have_link t("admin.buttons.download_#{table}"), href: send(:"admin_csv_#{table}_url")
+      end
+    end
+  end
+
   describe 'Ohana API version' do
     let(:version) { File.read('VERSION').chomp }
     let(:prefix) { 'https://github.com/codeforamerica/ohana-api/blob/master/' }
