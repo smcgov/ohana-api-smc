@@ -5,6 +5,7 @@ FactoryBot.define do
     name { 'VRS Services' }
     description { 'Provides jobs training' }
     kind { :other }
+    short_desc { 'short description' }
     accessibility { %i[tape_braille disabled_parking] }
     latitude { 37.583939 }
     longitude { -122.3715745 }
@@ -43,6 +44,7 @@ FactoryBot.define do
     description { 'great books about jobs' }
     kind { :human_services }
     importance { 2 }
+    short_desc { 'short description' }
     accessibility { [:elevator] }
     latitude { 37.5808591 }
     longitude { -122.343072 }
@@ -55,6 +57,7 @@ FactoryBot.define do
     name { 'No Address' }
     description { 'no coordinates' }
     kind { :other }
+    short_desc { 'short description' }
     virtual { true }
     association :organization, factory: :no_address_org
   end
@@ -67,6 +70,7 @@ FactoryBot.define do
     products { %w[Cheese Flowers Eggs Seafood Herbs] }
     kind { :farmers_markets }
     importance { 3 }
+    short_desc { 'short description' }
     latitude { 37.3180168 }
     longitude { -122.2743951 }
     languages { %w[French Tagalog] }
@@ -78,6 +82,7 @@ FactoryBot.define do
     name { 'Belmont Farmers Market' }
     description { 'yummy food' }
     kind { :other }
+    short_desc { 'short description' }
     latitude { 37.6047797 }
     longitude { -122.3984501 }
     association :address, factory: :far
@@ -89,6 +94,7 @@ FactoryBot.define do
     name { 'Belmont Farmers Market with cat' }
     description { 'yummy food and flute performers' }
     kind { :farmers_markets }
+    short_desc { 'short description' }
     address
     latitude { 37.568272 }
     longitude { -122.3250474 }
@@ -99,6 +105,7 @@ FactoryBot.define do
     name { 'Soup Kitchen' }
     description { 'daily hot soups' }
     kind { :human_services }
+    short_desc { 'short description' }
     latitude { 37.3180168 }
     longitude { -122.2743951 }
     association :address, factory: :far_west
