@@ -49,7 +49,7 @@ feature 'Downloading Locations CSV' do
       expect(csv.second).to eq [
         @loc.id.to_s, @loc.organization_id.to_s, '', nil, nil,
         'Provides jobs training', nil, nil, 'Other', nil, '37.583939',
-        '-122.3715745', 'false', 'VRS Services', '', '', nil,
+        '-122.3715745', 'false', 'VRS Services', '', '', 'short description',
         nil, nil, 'false'
       ]
     end
