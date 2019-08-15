@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.5.5'
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'ancestry'
 gem 'auto_strip_attributes', '~> 2.0'
-gem 'bootstrap-sass', '~> 3.3.0'
+gem 'bootstrap-sass', '~> 3.4.0'
 gem 'coffee-rails', '~> 4.1'
 gem 'csv_shaper'
 gem 'devise', '~> 4.1'
@@ -24,7 +24,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.1.5'
 gem 'readthis'
 gem 'redis'
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails', '~> 2.1'
 gem 'scout_apm'
 gem 'select2-rails', '~> 3.5'
 gem 'sentry-raven'
@@ -33,9 +33,13 @@ gem 'uglifier', '>= 1.3.0'
 
 group :test, :development do
   gem 'bullet'
-  gem 'factory_bot_rails'
+  # rubocop:disable Metrics/LineLength
+  gem 'factory_bot_rails', git: 'https://github.com/thoughtbot/factory_bot_rails.git', branch: 'i18n-loading-bug'
+  # rubocop:enable Metrics/LineLength
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.1'
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'smarter_csv'
 end
 
@@ -43,12 +47,11 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '>= 1.0.0.RC1'
   gem 'haml_lint'
-  gem 'poltergeist'
   gem 'rails-controller-testing'
-  gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem 'simplecov', require: false
+  gem 'webdrivers'
   gem 'webmock'
 end
 

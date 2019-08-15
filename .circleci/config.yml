@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Specify the Ruby version you desire here
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.5.5-node-browsers
         environment:
           RAILS_ENV: test
           CC_TEST_REPORTER_ID: 3a5ce4d68f640cd835334e1c239df8c4875d691cac58bb34197cb370604fa624
@@ -16,7 +16,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:10-alpine-ram
+      - image: circleci/postgres:11.4-alpine
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: ohana_api_smc_test
@@ -40,12 +40,7 @@ jobs:
             bundle install --deployment --jobs=4 --retry=3 --without development production --path vendor/bundle
             sudo apt update
             sudo apt-get install postgresql-client
-      - run:
-          name: Install phantomjs
-          command: |
-            sudo curl --output /tmp/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
-            sudo chmod ugo+x /tmp/phantomjs
-            sudo ln -sf /tmp/phantomjs /usr/local/bin/phantomjs
+
       - run:
           name: Install Code Climate Test Reporter
           command: |
