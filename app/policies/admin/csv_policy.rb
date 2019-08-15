@@ -1,6 +1,6 @@
 class Admin
   class CsvPolicy
-    SPECIAL_GUESTS = ENV['CSV_ACCESS_LIST'].freeze
+    SPECIAL_GUESTS = ENV['CSV_ACCESS_LIST']
 
     def initialize(admin:)
       @admin = admin
