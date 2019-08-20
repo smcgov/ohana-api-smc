@@ -26,9 +26,9 @@ The easiest way to assign categories to a service is to use the Admin interface.
 
 ## Stack Overview
 
-* Ruby version 2.5.3
-* Rails version 5.1.6
-* Postgres version 10
+* Ruby version 2.5.5
+* Rails version 5.1.7
+* Postgres version 11.4
 * Redis
 * Testing Frameworks: RSpec, Factory Girl, Capybara
 
