@@ -25,6 +25,7 @@ detectors:
       - ConfigValidator#required_keys_with_empty_values
       - RegexValidator#regex_validate_each
       - AssetHosts#call
+      - Location#downcase_admin_emails
   TooManyMethods:
     exclude:
       - Admin::CsvController
