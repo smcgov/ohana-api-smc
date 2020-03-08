@@ -57,10 +57,6 @@ Rails.application.configure do
     'Cache-Control' => 'public, s-maxage=2592000, max-age=86400'
   }
 
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
-  # yet still be able to expire them through the digest params.
-  config.assets.digest = true
-
   config.action_controller.perform_caching = true
   # Specify the asset_host to prevent host header injection.
   require 'asset_hosts'
@@ -86,6 +82,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['MAILER_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_caching = false
 
   config.action_mailer.default charset: 'utf-8'
 

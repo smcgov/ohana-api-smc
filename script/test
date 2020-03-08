@@ -2,6 +2,6 @@
 
 set -e
 
-spring rspec
-rubocop
-haml-lint app/views
+bundle exec rspec
+bundle exec rubocop
+bundle exec haml-lint app/views
