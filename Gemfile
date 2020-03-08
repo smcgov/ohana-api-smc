@@ -21,7 +21,7 @@ gem 'puma'
 gem 'pundit'
 gem 'rabl'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2'
 gem 'readthis'
 gem 'redis'
 gem 'sassc-rails', '~> 2.1'
@@ -67,4 +67,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
   gem 'stackprof'
+  # Access an interactive console on exception pages or by calling 'console'
+  # anywhere in the code.
+  gem 'web-console'
 end
