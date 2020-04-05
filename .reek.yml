@@ -26,6 +26,7 @@ detectors:
       - RegexValidator#regex_validate_each
       - AssetHosts#call
       - Location#downcase_admin_emails
+      - Location#remove_duplicates
   TooManyMethods:
     exclude:
       - Admin::CsvController
