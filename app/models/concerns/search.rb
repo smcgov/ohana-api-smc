@@ -69,8 +69,11 @@ module Search
     end
 
     def keyword(query)
+      order_query = Arel.sql(
+        "locations.importance + #{rank_for(query)} DESC, locations.updated_at DESC"
+      )
       where("locations.tsv_body @@ plainto_tsquery('english', ?)", query).
-        order("locations.importance + #{rank_for(query)} DESC, locations.updated_at DESC")
+        order(order_query)
     end
 
     def rank_for(query)
