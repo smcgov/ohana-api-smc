@@ -49,7 +49,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
-  gem 'simplecov', require: false
+  gem 'simplecov', '>= 0.17.1', require: false
   gem 'webdrivers'
   gem 'webmock'
 end
