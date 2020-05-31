@@ -36,7 +36,7 @@ group :test, :development do
   gem 'factory_bot_rails'
 
   gem 'rspec-its'
-  gem 'rspec-rails', '~> 3.1'
+  gem 'rspec-rails', '~> 4.0'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
@@ -48,7 +48,7 @@ group :test do
   gem 'haml_lint'
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'webmock'
