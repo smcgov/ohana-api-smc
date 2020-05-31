@@ -48,7 +48,7 @@ group :test do
   gem 'haml_lint'
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'webmock'
