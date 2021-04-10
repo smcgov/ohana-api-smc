@@ -37,17 +37,17 @@ group :test, :development do
 
   gem 'rspec-its'
   gem 'rspec-rails', '~> 4.0'
-  gem 'rubocop'
-  gem 'rubocop-rails'
+  gem 'rubocop', '>= 0.84.0'
+  gem 'rubocop-rails', '>= 2.5.2'
   gem 'smarter_csv'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner', '>= 1.0.0.RC1'
-  gem 'haml_lint'
+  gem 'haml_lint', '>= 0.35.0'
   gem 'rails-controller-testing'
-  gem 'rubocop-rspec'
+  gem 'rubocop-rspec', '>= 1.39.0'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
