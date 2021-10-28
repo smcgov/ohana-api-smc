@@ -501,7 +501,7 @@ describe "GET 'search'" do
 
     it 'allows sorting by kind (default order is asc)' do
       get '/api/search?kind[]=Other&kind[]=human%20services&' \
-        'kind[]=farmers_markets&sort=kind'
+          'kind[]=farmers_markets&sort=kind'
       expect(headers['X-Total-Count']).to eq '3'
       expect(json.first['name']).to eq 'Belmont Farmers Market'
       expect(json[1]['name']).to eq 'Library'
@@ -510,7 +510,7 @@ describe "GET 'search'" do
 
     it 'allows sorting by kind and ordering desc' do
       get '/api/search?kind[]=Other&kind[]=human%20services&' \
-        'kind[]=farmers_markets&sort=kind&order=desc'
+          'kind[]=farmers_markets&sort=kind&order=desc'
       expect(headers['X-Total-Count']).to eq '3'
       expect(json.first['name']).to eq 'VRS Services'
       expect(json[1]['name']).to eq 'Library'
