@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.4'
 gem 'active_model_serializers', '~> 0.8.0'
-gem 'ancestry'
+gem 'ancestry', '~> 3.0.7'
 gem 'auto_strip_attributes', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.4.0'
 gem 'coffee-rails', '~> 4.1'
@@ -33,7 +33,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :test, :development do
   gem 'bullet'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '~> 5.2.0'
 
   gem 'rspec-its'
   gem 'rspec-rails', '~> 4.0'
@@ -44,11 +44,11 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner', '>= 1.0.0.RC1'
+  gem 'database_cleaner', '~> 1.8.4'
   gem 'haml_lint'
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.3'
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'webmock'
