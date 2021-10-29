@@ -13,6 +13,7 @@ AllCops:
     - 'db/migrate/*'
   TargetRubyVersion: 2.6
   UseCache: true
+  NewCops: enable
 
 Metrics/AbcSize:
   Description: A calculated magnitude based on number of assignments, branches, and
@@ -312,3 +313,8 @@ Style/ExponentialNotation:
   Enabled: true
 Style/SlicingWithRange:
   Enabled: true
+
+Naming/VariableNumber:
+  Enabled: false
+Style/GlobalStdStream:
+  Enabled: false

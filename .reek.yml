@@ -40,6 +40,7 @@ detectors:
       - Admin::ServiceContactsController
       - Admin::ServicesController
   UtilityFunction:
+    public_methods_only: true
     exclude:
       - Admin::ServicesController#program_ids_for
       - Admin::CsvController#zip_file_name

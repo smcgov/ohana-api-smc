@@ -46,7 +46,7 @@ module Search
     scope :has_kind, (lambda do |k|
       if k.present? && k.is_a?(Array)
         k = k.map { |v| v.parameterize.underscore }
-        where('kind in (?)', k)
+        where(kind: k)
       elsif k.present? && k.is_a?(String)
         k = k.parameterize.underscore
         where(kind: k)
