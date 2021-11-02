@@ -24,7 +24,7 @@ describe 'CORS Preflight Request via OPTIONS HTTP method' do
       expect(headers['Access-Control-Allow-Origin']).to eq('*')
     end
 
-    it 'sets Access-Control-Allow-Methods to the whitelisted methods' do
+    it 'sets Access-Control-Allow-Methods to the safelisted methods' do
       allowed_http_methods = headers['Access-Control-Allow-Methods']
       expect(allowed_http_methods).
         to eq(%w[GET PUT PATCH POST DELETE].join(', '))
@@ -103,7 +103,7 @@ describe 'CORS Preflight Request via OPTIONS HTTP method' do
       expect(headers['Access-Control-Allow-Origin']).to eq('*')
     end
 
-    it 'does not allow access to non-whitelisted endpoints' do
+    it 'does not allow access to non-safelisted endpoints' do
       process(
         :options,
         url_for('/api/foo'),
@@ -159,7 +159,7 @@ describe 'CORS REQUESTS - POST and GET' do
       expect(headers['Access-Control-Allow-Origin']).to eq('*')
     end
 
-    it 'sets Access-Control-Allow-Methods to the whitelisted methods' do
+    it 'sets Access-Control-Allow-Methods to the safelisted methods' do
       allowed_http_methods = headers['Access-Control-Allow-Methods']
       expect(allowed_http_methods).
         to eq(%w[GET PUT PATCH POST DELETE].join(', '))
