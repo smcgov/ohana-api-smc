@@ -140,6 +140,11 @@ feature 'Admin Home page' do
         to_not have_link I18n.t('admin.buttons.add_program'), href: new_admin_program_path
     end
 
+    it 'does not display a link to update admin to super admin' do
+      expect(page).
+        to_not have_link I18n.t('admin.buttons.update_admin'), href: admin_admins_path
+    end
+
     it 'does not display a link to download CSV' do
       expect(page).to_not have_content 'CSV Downloads'
       expect(page).
@@ -196,6 +201,11 @@ feature 'Admin Home page' do
         expect(page).
           to have_link t("admin.buttons.download_#{table}"), href: send(:"admin_csv_#{table}_url")
       end
+    end
+
+    it 'displays a link to update admin to super admin' do
+      expect(page).
+        to have_link I18n.t('admin.buttons.update_admin'), href: admin_admins_path
     end
   end
 

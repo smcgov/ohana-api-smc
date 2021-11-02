@@ -1,0 +1,5 @@
+.content-box
+  %h2 Update an admin to super admin
+  %h3 Enter the email of an existing admin.
+= form_for(@update_admin, url: admin_admins_path, html: { class: 'edit-entry' }) do |f|
+  = render 'admin/admins/form', f: f, admin: @update_admin

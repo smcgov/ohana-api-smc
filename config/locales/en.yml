@@ -166,6 +166,7 @@ en:
       download_programs: 'Download Programs'
       download_regular_schedules: 'Download Regular Schedules'
       download_services: 'Download Services'
+      update_admin: 'Update admin to super admin'
 
     locations:
       forms:
