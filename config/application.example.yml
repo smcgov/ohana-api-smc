@@ -109,6 +109,16 @@
 # return per page. If a client sets the "per_page" parameter to a value higher
 # than MAX_PER_PAGE, the API will limit results per page to MAX_PER_PAGE.
 
+############################
+#
+# EMAIL_SENDER - REQUIRED
+#
+############################
+#
+# The email address that emails in the Developer and Admin sites are sent from.
+# For example, after a user signs up, or asks to reset their password.
+# Please make sure to change this to your own email address.
+
 #############
 #
 # EXPIRES_IN
@@ -216,6 +226,7 @@ development:
   DEV_SUBDOMAIN: developer
   DEFAULT_PER_PAGE: '30'
   DOMAIN_NAME: lvh.me
+  EMAIL_SENDER: 'registration@ohanapi.org'
   GOOGLE_GEOCODING_API_KEY:
   MAX_PER_PAGE: '50'
   READTHIS_DRIVER: 'hiredis'
@@ -237,6 +248,7 @@ production:
   DEV_SUBDOMAIN: developer
   DEFAULT_PER_PAGE: '30'
   DOMAIN_NAME:
+  EMAIL_SENDER: 'registration@ohanapi.org'
   GOOGLE_GEOCODING_API_KEY:
   MAX_PER_PAGE: '50'
   EXPIRES_IN: '1'
@@ -259,5 +271,6 @@ test:
   DEV_SUBDOMAIN:
   DEFAULT_PER_PAGE: '30'
   DOMAIN_NAME: example.com
+  EMAIL_SENDER: 'registration@ohanapi.org'
   MAX_PER_PAGE: '50'
   ADMIN_APP_TOKEN: testing123

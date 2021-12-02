@@ -362,17 +362,6 @@ valid_service_areas:
 # style, change the value below to '%d/%m/'.
 date_format: '%m/%d/'
 
-############################
-#
-# EMAIL DELIVERY SETTINGS
-#
-############################
-#
-# The email address that confirmation emails are sent from after user signup,
-# for the Developer and Admin portals.
-# Please make sure to change this to your own email address.
-confirmation_email: ohanapi@codeforamerica.org
-
 ###############################
 #
 # GEOGRAPHICAL BOUNDS SETTINGS

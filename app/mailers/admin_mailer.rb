@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-  default from: SETTINGS[:confirmation_email]
+  default from: ENV['EMAIL_SENDER']
 
   def existing_email_signup(resource)
     @portal = portal_for(resource)
