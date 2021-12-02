@@ -371,7 +371,7 @@ date_format: '%m/%d/'
 # The email address that confirmation emails are sent from after user signup,
 # for the Developer and Admin portals.
 # Please make sure to change this to your own email address.
-confirmation_email: mtcastro@smcgov.org
+confirmation_email: moncef@monfresh.com
 
 ###############################
 #
