@@ -11,7 +11,7 @@ feature 'Signing up for a new admin account' do
   scenario 'with custom confirmation email address' do
     reset_email
     sign_up_admin('Moncef', 'moncef@foo.com', 'ohanatest', 'ohanatest')
-    expect(first_email.from.first).to eq('registration@ohanapi.org')
+    expect(first_email.from.first).to eq('ohana@example.com')
   end
 
   scenario 'with custom mailer' do
