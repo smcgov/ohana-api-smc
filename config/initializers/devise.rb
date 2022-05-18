@@ -251,5 +251,5 @@ Devise.setup do |config|
   # DEPRECATED: Recent versions of Devise will use the Rails secret_key_base in
   # Rails 4+, so this setting should not be used. It is left here to allow
   # deployments to control when their existing tokens are invalidated.
-  config.secret_key = ENV['DEVISE_SECRET_KEY']
+  # config.secret_key = ENV['DEVISE_SECRET_KEY']
 end
