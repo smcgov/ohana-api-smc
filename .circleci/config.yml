@@ -2,56 +2,53 @@
 #
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.8.0
+  node: circleci/node@5.0.2
+  browser-tools: circleci/browser-tools@1.3.0
+
 jobs:
   build:
     docker:
       # Specify the Ruby version you desire here
-      - image: circleci/ruby:2.7.5-node-browsers
-        environment:
-          RAILS_ENV: test
-          CC_TEST_REPORTER_ID: 3a5ce4d68f640cd835334e1c239df8c4875d691cac58bb34197cb370604fa624
-          COVERAGE: true
+      - image: cimg/ruby:2.7-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:11.4-alpine
+      - image: cimg/postgres:10.20
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: ohana_api_smc_test
+          POSTGRES_PASSWORD: ""
 
-    working_directory: ~/ohana-api-smc
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: circleci
+      PGPASSWORD: ""
+      RAILS_ENV: test
+      CC_TEST_REPORTER_ID: 3a5ce4d68f640cd835334e1c239df8c4875d691cac58bb34197cb370604fa624
+      COVERAGE: true
 
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - checkout
-
-      - restore-cache:
-          key: ohana-api-smc-{{ checksum "Gemfile.lock" }}
+      - ruby/install-deps
 
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
-          name: Install dependencies
-          command: |
-            gem install bundler
-            bundle install --deployment --jobs=4 --retry=3 --without development production --path vendor/bundle
-            sudo apt update
-            sudo apt-get install postgresql-client
-
-      - run:
           name: Install Code Climate Test Reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-
-      # Store bundle cache
-      - save-cache:
-          key: ohana-api-smc-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
 
       - run:
           name: Test Setup

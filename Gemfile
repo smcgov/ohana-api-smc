@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.7.5'
+ruby File.read('.ruby-version').strip
+
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'ancestry', '~> 3.0.7'
 gem 'auto_strip_attributes', '~> 2.0'
