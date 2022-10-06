@@ -45,8 +45,8 @@ chdir APP_ROOT do
   end
 
   puts '== Restoring the development database from test data =='
-  system 'heroku pg:backups:capture -a smc-ohana-api-test'
-  system 'curl -o data/latest.dump `heroku pg:backups:url -a smc-ohana-api-test`'
+  system 'heroku pg:backups:capture -a ohana-api-smc'
+  system 'curl -o data/latest.dump `heroku pg:backups:url -a ohana-api-smc`'
   system 'pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ohana_api_smc_development data/latest.dump'
 
   puts "\n== Removing old logs and tempfiles =="

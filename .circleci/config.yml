@@ -64,6 +64,7 @@ jobs:
             ./cc-test-reporter before-build
 
             bundle exec rspec --format progress
+            bundle exec rubocop
             bundle exec haml-lint app/views
 
       - run:

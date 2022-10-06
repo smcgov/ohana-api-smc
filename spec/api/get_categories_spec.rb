@@ -7,7 +7,7 @@ describe 'GET /categories' do
   end
 
   before :each do
-    get api_categories_url(subdomain: ENV['API_SUBDOMAIN'])
+    get api_categories_url(subdomain: api_subdomain)
   end
 
   after(:all) do

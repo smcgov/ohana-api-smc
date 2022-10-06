@@ -37,4 +37,12 @@ describe Phone do
       expect(phone.vanity_number).to eq('800-FLY-AWAY')
     end
   end
+
+  describe 'parent presence validation' do
+    it 'has at least one parent' do
+      phone = build(:phone)
+      expect(phone).to_not be_valid
+      expect(phone.errors.messages[:base][0]).to include 'is missing a parent'
+    end
+  end
 end

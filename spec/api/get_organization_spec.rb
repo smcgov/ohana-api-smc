@@ -7,7 +7,7 @@ describe 'GET /organizations/:id' do
     end
 
     before :each do
-      get api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN'])
+      get api_organization_url(@org, subdomain: api_subdomain)
     end
 
     after(:all) do
@@ -58,7 +58,7 @@ describe 'GET /organizations/:id' do
 
   context 'with invalid id' do
     before :each do
-      get api_organization_url(1, subdomain: ENV['API_SUBDOMAIN'])
+      get api_organization_url(1, subdomain: api_subdomain)
     end
 
     it 'returns a status key equal to 404' do
@@ -85,7 +85,7 @@ describe 'GET /organizations/:id' do
     end
 
     it 'returns nil fields when visiting one organization' do
-      get api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN'])
+      get api_organization_url(@org, subdomain: api_subdomain)
       expect(json.keys).to include('website')
     end
   end

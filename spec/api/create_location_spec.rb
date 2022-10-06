@@ -23,7 +23,7 @@ describe 'Create a location (POST /organizations/:organization_id/locations/)' d
 
   it 'creates a location with valid attributes' do
     post(
-      api_organization_locations_url(@org, subdomain: ENV['API_SUBDOMAIN']),
+      api_organization_locations_url(@org, subdomain: api_subdomain),
       @location_attributes
     )
     expect(response.status).to eq(201)
@@ -32,7 +32,7 @@ describe 'Create a location (POST /organizations/:organization_id/locations/)' d
 
   it 'returns a limited payload after creation' do
     post(
-      api_organization_locations_url(@org, subdomain: ENV['API_SUBDOMAIN']),
+      api_organization_locations_url(@org, subdomain: api_subdomain),
       @location_attributes
     )
     expect(json.keys).to eq(%w[id name slug])
@@ -40,16 +40,16 @@ describe 'Create a location (POST /organizations/:organization_id/locations/)' d
 
   it 'returns a Location header with the URL to the new location' do
     post(
-      api_organization_locations_url(@org, subdomain: ENV['API_SUBDOMAIN']),
+      api_organization_locations_url(@org, subdomain: api_subdomain),
       @location_attributes
     )
     expect(headers['Location']).
-      to eq(api_location_url('new-location', subdomain: ENV['API_SUBDOMAIN']))
+      to eq(api_location_url('new-location', subdomain: api_subdomain))
   end
 
   it "doesn't create a location with invalid attributes" do
     post(
-      api_organization_locations_url(@org, subdomain: ENV['API_SUBDOMAIN']),
+      api_organization_locations_url(@org, subdomain: api_subdomain),
       name: nil
     )
     expect(response.status).to eq(422)
@@ -58,7 +58,7 @@ describe 'Create a location (POST /organizations/:organization_id/locations/)' d
 
   it "doesn't allow creating a location without a valid token" do
     post(
-      api_organization_locations_url(@org, subdomain: ENV['API_SUBDOMAIN']),
+      api_organization_locations_url(@org, subdomain: api_subdomain),
       @location_attributes,
       'HTTP_X_API_TOKEN' => 'invalid_token'
     )

@@ -93,6 +93,9 @@ Rails/HttpPositionalArguments:
     - 'spec/**/*'
     - 'test/**/*'
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - 'app/controllers/concerns/token_validator.rb'

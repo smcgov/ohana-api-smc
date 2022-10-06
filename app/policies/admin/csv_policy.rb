@@ -1,6 +1,6 @@
 class Admin
   class CsvPolicy
-    SPECIAL_GUESTS = ENV['CSV_ACCESS_LIST']
+    SPECIAL_GUESTS = ENV.fetch('CSV_ACCESS_LIST', nil)
 
     def initialize(admin:)
       @admin = admin

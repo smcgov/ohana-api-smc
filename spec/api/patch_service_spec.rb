@@ -42,7 +42,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it 'returns 200 when validations pass' do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs
     )
     expect(response).to have_http_status(200)
@@ -53,16 +53,16 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it "updates the location's service" do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs
     )
-    get api_location_url(@location, subdomain: ENV['API_SUBDOMAIN'])
+    get api_location_url(@location, subdomain: api_subdomain)
     expect(json['services'].first['description']).to eq expected_attributes[:description]
   end
 
   it "doesn't add a new service" do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs
     )
     expect(Service.count).to eq(1)
@@ -70,7 +70,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it 'requires a valid service id' do
     patch(
-      api_location_service_url(@location, 123, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, 123, subdomain: api_subdomain),
       @attrs
     )
     expect(response.status).to eq(404)
@@ -80,7 +80,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it 'returns 422 when attribute is invalid' do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs.merge!(service_areas: ['Belmont, CA'])
     )
     expect(response.status).to eq(422)
@@ -91,7 +91,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it 'returns 422 when service_areas is a String' do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs.merge!(service_areas: '')
     )
     expect(response.status).to eq(422)
@@ -104,7 +104,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
     location = create(:nearby_loc)
     service = location.services.create!(attributes_for(:service_with_extra_whitespace))
     patch(
-      api_location_service_url(location, service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(location, service, subdomain: api_subdomain),
       @attrs.merge!(
         accepted_payments: '',
         funding_sources: '',
@@ -121,7 +121,7 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it "doesn't allow updating a service without a valid token" do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       @attrs,
       'HTTP_X_API_TOKEN' => 'invalid_token'
     )
@@ -130,10 +130,10 @@ describe 'PATCH /locations/:location_id/services/:id' do
 
   it 'updates search index when service changes' do
     patch(
-      api_location_service_url(@location, @service, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_service_url(@location, @service, subdomain: api_subdomain),
       description: 'fresh tunes for the soul'
     )
-    get api_search_index_url(keyword: 'yoga', subdomain: ENV['API_SUBDOMAIN'])
+    get api_search_index_url(keyword: 'yoga', subdomain: api_subdomain)
     expect(headers['X-Total-Count']).to eq '0'
   end
 end

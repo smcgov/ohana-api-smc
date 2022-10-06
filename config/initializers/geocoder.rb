@@ -10,7 +10,7 @@ cache = Readthis::Cache.new(
 
 Geocoder.configure(
   lookup: :google,
-  api_key: ENV['GOOGLE_GEOCODING_API_KEY'],
+  api_key: ENV.fetch('GOOGLE_GEOCODING_API_KEY', nil),
   use_https: true,
   cache: cache,
   always_raise: [

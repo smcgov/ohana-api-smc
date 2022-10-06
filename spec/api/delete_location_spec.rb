@@ -6,7 +6,7 @@ describe 'DELETE /locations/:id' do
   end
 
   before :each do
-    delete api_location_url(@location, subdomain: ENV['API_SUBDOMAIN']), {}
+    delete api_location_url(@location, subdomain: api_subdomain), {}
   end
 
   after(:all) do
@@ -14,7 +14,7 @@ describe 'DELETE /locations/:id' do
   end
 
   it 'deletes the location' do
-    get api_location_url(@location, subdomain: ENV['API_SUBDOMAIN'])
+    get api_location_url(@location, subdomain: api_subdomain)
     expect(response.status).to eq(404)
     expect(Location.count).to eq(0)
   end
@@ -24,7 +24,7 @@ describe 'DELETE /locations/:id' do
   end
 
   it 'updates the search index' do
-    get api_search_index_url(keyword: 'vrs', subdomain: ENV['API_SUBDOMAIN'])
+    get api_search_index_url(keyword: 'vrs', subdomain: api_subdomain)
     expect(json.size).to eq(0)
   end
 end
@@ -33,7 +33,7 @@ describe 'with an invalid token' do
   before :each do
     create_service
     delete(
-      api_location_url(@location, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_url(@location, subdomain: api_subdomain),
       {},
       'HTTP_X_API_TOKEN' => 'foo'
     )
