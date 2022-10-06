@@ -18,7 +18,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: cimg/postgres:10.20
+      - image: cimg/postgres:14.5
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: ohana_api_smc_test
@@ -64,7 +64,6 @@ jobs:
             ./cc-test-reporter before-build
 
             bundle exec rspec --format progress
-            bundle exec rubocop
             bundle exec haml-lint app/views
 
       - run:
