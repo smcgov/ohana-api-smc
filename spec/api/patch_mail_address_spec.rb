@@ -18,7 +18,7 @@ describe 'PATCH mail_address' do
   describe 'PATCH /locations/:location/mail_address' do
     it 'returns 200 when validations pass' do
       patch(
-        api_location_mail_address_url(@loc, @mail_address, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, @mail_address, subdomain: api_subdomain),
         @attrs
       )
       expect(response).to have_http_status(200)
@@ -32,16 +32,16 @@ describe 'PATCH mail_address' do
 
     it "updates the location's mail_address" do
       patch(
-        api_location_mail_address_url(@loc, @mail_address, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, @mail_address, subdomain: api_subdomain),
         @attrs
       )
-      get api_location_url(@loc, subdomain: ENV['API_SUBDOMAIN'])
+      get api_location_url(@loc, subdomain: api_subdomain)
       expect(json['mail_address']['address_1']).to eq 'foo'
     end
 
     it "doesn't add a new mail_address" do
       patch(
-        api_location_mail_address_url(@loc, @mail_address, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, @mail_address, subdomain: api_subdomain),
         @attrs
       )
       expect(MailAddress.count).to eq(1)
@@ -49,7 +49,7 @@ describe 'PATCH mail_address' do
 
     it 'requires a valid mail_address id' do
       patch(
-        api_location_mail_address_url(@loc, 123, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, 123, subdomain: api_subdomain),
         @attrs
       )
       expect(response.status).to eq(404)
@@ -59,7 +59,7 @@ describe 'PATCH mail_address' do
 
     it 'returns 422 when attribute is invalid' do
       patch(
-        api_location_mail_address_url(@loc, @mail_address, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, @mail_address, subdomain: api_subdomain),
         @attrs.merge!(address_1: '')
       )
       expect(response.status).to eq(422)
@@ -70,7 +70,7 @@ describe 'PATCH mail_address' do
 
     it "doesn't allow updating a mail_address without a valid token" do
       patch(
-        api_location_mail_address_url(@loc, @mail_address, subdomain: ENV['API_SUBDOMAIN']),
+        api_location_mail_address_url(@loc, @mail_address, subdomain: api_subdomain),
         @attrs,
         'HTTP_X_API_TOKEN' => 'invalid_token'
       )

@@ -7,7 +7,7 @@ module PrivateRegistration
     elsif resource_valid_except_for_duplicate_email?
       process_private_registration
     else
-      resource.errors[:email].delete_if { |e| e == 'has already been taken' }
+      remove_has_already_been_taken_error
       process_unsuccessful_registration
     end
   end
@@ -48,5 +48,11 @@ module PrivateRegistration
     @validatable = devise_mapping.validatable?
     @minimum_password_length = resource_class.password_length.min if @validatable
     respond_with resource
+  end
+
+  def remove_has_already_been_taken_error
+    resource.errors.messages.delete_if do |attr, msg_array|
+      attr == :email && msg_array[0] == 'has already been taken'
+    end
   end
 end

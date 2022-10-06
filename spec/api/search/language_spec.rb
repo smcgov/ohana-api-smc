@@ -10,7 +10,7 @@ describe "GET 'search'" do
     it 'finds matching locations when language is a String' do
       get api_search_index_url(
         language: 'Arabic',
-        subdomain: ENV['API_SUBDOMAIN']
+        subdomain: api_subdomain
       )
       expect(json.length).to eq(1)
       expect(json.first['name']).to eq('Library')

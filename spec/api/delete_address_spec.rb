@@ -17,7 +17,7 @@ describe 'DELETE /locations/:location/address/:id' do
   it 'deletes the address when the location is virtual' do
     @loc.update!(virtual: true)
     delete(
-      api_location_address_url(@loc, @address, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_address_url(@loc, @address, subdomain: api_subdomain),
       {}
     )
     expect(@loc.reload.address).to be_nil
@@ -29,7 +29,7 @@ describe 'DELETE /locations/:location/address/:id' do
   it 'returns a 204 status' do
     @loc.update!(virtual: true)
     delete(
-      api_location_address_url(@loc, @address, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_address_url(@loc, @address, subdomain: api_subdomain),
       {}
     )
     expect(response).to have_http_status(204)
@@ -37,7 +37,7 @@ describe 'DELETE /locations/:location/address/:id' do
 
   it "doesn't allow deleting an address without a valid token" do
     delete(
-      api_location_address_url(@loc, @address, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_address_url(@loc, @address, subdomain: api_subdomain),
       {},
       'HTTP_X_API_TOKEN' => 'invalid_token'
     )
@@ -46,7 +46,7 @@ describe 'DELETE /locations/:location/address/:id' do
 
   it "doesn't delete the address if the location is not virtual" do
     delete(
-      api_location_address_url(@loc, @address, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_address_url(@loc, @address, subdomain: api_subdomain),
       {}
     )
     expect(response).to have_http_status(422)
@@ -56,7 +56,7 @@ describe 'DELETE /locations/:location/address/:id' do
 
   it "doesn't delete the address if the location & address IDs don't match" do
     delete(
-      api_location_address_url(123, @address, subdomain: ENV['API_SUBDOMAIN']),
+      api_location_address_url(123, @address, subdomain: api_subdomain),
       {}
     )
     expect(response).to have_http_status(404)

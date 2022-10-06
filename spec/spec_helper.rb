@@ -26,9 +26,7 @@ RSpec.configure do |config|
   config.order = :random
 
   config.after(:suite) do
-    if File.exist?(Rails.root.join('tmp/archive.zip'))
-      File.delete(Rails.root.join('tmp/archive.zip'))
-    end
+    FileUtils.rm_f(Rails.root.join('tmp/archive.zip'))
   end
 
   # allows you to run only the failures from the previous run:
