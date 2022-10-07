@@ -6,14 +6,12 @@ class Admin
     include Taggable
 
     def index
-      @all_orgs = policy_scope(Organization)
-      @orgs = Kaminari.paginate_array(@all_orgs).page(params[:page])
+      all_orgs = policy_scope(Organization)
+      @orgs = Kaminari.paginate_array(all_orgs).page(params[:page])
 
       respond_to do |format|
         format.html
-        format.json do
-          render json: @all_orgs.select { |org| org[1] =~ /#{params[:q]}/i }
-        end
+        format.json { render json: matching_orgs(all_orgs, params[:q]) }
       end
     end
 
@@ -77,6 +75,12 @@ class Admin
           country_prefix department extension number number_type vanity_number id _destroy
         ]
       )
+    end
+
+    def matching_orgs(orgs, search_term)
+      return [] if search_term.nil?
+
+      orgs.select { |org| org[1].downcase.include?(search_term.downcase) }
     end
   end
 end

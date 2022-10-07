@@ -65,6 +65,7 @@ jobs:
 
             bundle exec rspec --format progress
             bundle exec haml-lint app/views
+            bundle exec brakeman --no-pager
 
       - run:
           name: Upload Test Results to Code Climate

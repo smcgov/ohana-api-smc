@@ -58,6 +58,7 @@ end
 
 group :development do
   gem 'better_errors', '>= 0.7.2'
+  gem 'brakeman'
   gem 'bummr'
   gem 'derailed'
   gem 'flamegraph'
