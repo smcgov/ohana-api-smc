@@ -12,7 +12,7 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'db/migrate/*'
   TargetRubyVersion: 2.7
-  UseCache: false
+  UseCache: true
   NewCops: enable
 
 Metrics/AbcSize:
@@ -60,6 +60,8 @@ Layout/LineLength:
     - config/initializers/secret_token.rb
     - app/validators/url_validator.rb
     - config/initializers/content_security_policy.rb
+    - config/environments/production.rb
+    - config/initializers/new_framework_defaults_6_0.rb
 
 Metrics/MethodLength:
   Description: Avoid methods longer than 10 lines of code.
