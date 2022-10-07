@@ -22,6 +22,7 @@ detectors:
       - Admin::OrganizationsController#index
   NilCheck:
     exclude:
+      - Admin::OrganizationsController#matching_orgs
       - ConfigValidator#required_keys_with_empty_values
       - RegexValidator#regex_validate_each
       - AssetHosts#call
