@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 # Pick the frameworks you want:
+require 'active_model/railtie'
 require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
@@ -17,7 +18,7 @@ Bundler.require(*Rails.groups)
 
 module OhanaApi
   class Application < Rails::Application
-    config.load_defaults 5.1
+    config.load_defaults 5.2
     config.autoload_paths << Rails.root.join('lib')
 
     # don't generate RSpec tests for views and helpers

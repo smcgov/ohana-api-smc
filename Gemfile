@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 ruby File.read('.ruby-version').strip
 
 gem 'active_model_serializers', '~> 0.8.0'
-gem 'ancestry', '~> 3.0.7'
+gem 'ancestry', '~> 4.2.0'
 gem 'auto_strip_attributes', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.4.0'
-gem 'coffee-rails', '~> 4.1'
+gem 'coffee-rails', '~> 5.0'
 gem 'csv_shaper'
 gem 'devise', '~> 4.1'
 gem 'enumerize'
@@ -22,7 +22,7 @@ gem 'puma'
 gem 'pundit'
 gem 'rabl'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0.6'
 gem 'readthis'
 gem 'redis'
 gem 'sassc-rails', '~> 2.1'
@@ -38,7 +38,7 @@ group :test, :development do
   gem 'factory_bot_rails', '~> 5.2.0'
 
   gem 'rspec-its'
-  gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-rails', '~> 5.1'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
@@ -58,6 +58,7 @@ end
 
 group :development do
   gem 'better_errors', '>= 0.7.2'
+  gem 'brakeman'
   gem 'bummr'
   gem 'derailed'
   gem 'flamegraph'

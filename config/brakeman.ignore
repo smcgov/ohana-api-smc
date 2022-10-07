@@ -1,0 +1,29 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "d162fe2de82c181d4102159162b3cacabbe11c782cf46b9e587b380bc6d919bc",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/search.rb",
+      "line": 73,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"locations.importance + #{rank_for(query)} DESC, locations.updated_at DESC\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Search::ClassMethods",
+        "method": "keyword"
+      },
+      "user_input": "rank_for(query)",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2022-10-07 11:40:33 -0400",
+  "brakeman_version": "5.3.1"
+}

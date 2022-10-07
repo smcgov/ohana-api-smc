@@ -19,6 +19,7 @@ Rails.application.configure do
   #
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
     config.action_dispatch.rack_cache = {
       metastore: "#{ENV.fetch('REDISCLOUD_URL')}/1/metastore",
       entitystore: "#{ENV.fetch('REDISCLOUD_URL')}/1/entitystore",
@@ -78,4 +79,6 @@ Rails.application.configure do
     Bullet.bullet_logger = true
     Bullet.rails_logger = true
   end
+
+  config.hosts += %w[lvh.me admin.lvh.me]
 end
