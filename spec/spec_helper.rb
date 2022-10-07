@@ -25,10 +25,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = :random
 
-  config.after(:suite) do
-    FileUtils.rm_f(Rails.root.join('tmp/archive.zip'))
-  end
-
   # allows you to run only the failures from the previous run:
   # rspec --only-failures
   config.example_status_persistence_file_path = './tmp/rspec-examples.txt'

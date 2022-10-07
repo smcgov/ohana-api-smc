@@ -17,8 +17,9 @@ Rails.application.configure do
   # You'll need to install Redis if you don't already have it:
   # brew install redis
   #
-  if Rails.root.join('tmp/caching-dev.txt').exist?
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
     config.action_dispatch.rack_cache = {
       metastore: "#{ENV.fetch('REDISCLOUD_URL')}/1/metastore",
       entitystore: "#{ENV.fetch('REDISCLOUD_URL')}/1/entitystore",

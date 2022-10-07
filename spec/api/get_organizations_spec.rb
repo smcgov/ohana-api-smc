@@ -4,7 +4,7 @@ describe 'GET /organizations' do
   it 'returns an empty array when no organizations exist' do
     get api_organizations_url(subdomain: api_subdomain)
     expect(response).to have_http_status(200)
-    expect(response.content_type).to eq('application/json')
+    expect(response.media_type).to eq('application/json')
     expect(json).to eq([])
   end
 

@@ -4,7 +4,7 @@ describe 'GET /locations' do
   it 'returns an empty array when no locations exist' do
     get api_locations_url(subdomain: api_subdomain)
     expect(response).to have_http_status(200)
-    expect(response.content_type).to eq('application/json')
+    expect(response.media_type).to eq('application/json')
     expect(json).to eq([])
   end
 

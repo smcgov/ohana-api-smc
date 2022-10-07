@@ -33,7 +33,7 @@ describe 'POST /locations/:location_id/mail_address' do
       expect(json['mail_address']['address_1']).to eq(@attrs[:address_1])
     end
 
-    it "doesn't create an mail_address with invalid attributes" do
+    it "doesn't create a mail_address with invalid attributes" do
       post(
         api_location_mail_address_index_url(@loc, subdomain: api_subdomain),
         address_1: nil
