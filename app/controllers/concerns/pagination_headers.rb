@@ -6,9 +6,7 @@ module PaginationHeaders
   def generate_pagination_headers(coll)
     pages = pages(coll)
 
-    links = links(pages)
-
-    links.delete_if(&:blank?)
+    links = links(pages).compact_blank!
 
     response.headers['Link'] = links.join(', ') if links.present?
     response.headers['X-Total-Count'] = coll.total_count.to_s

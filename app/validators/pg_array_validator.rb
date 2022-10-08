@@ -11,7 +11,7 @@ class PgArrayValidator < ActiveModel::EachValidator
       return
     end
 
-    record[attribute] = attr.map(&:squish).reject(&:blank?).uniq
+    record[attribute] = attr.map(&:squish).compact_blank.uniq
   end
 
   def does_not_need_validation?(attr)
