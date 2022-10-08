@@ -117,6 +117,10 @@ feature 'Signing up' do
         sign_up('', 'moncef@foo.com', '', 'ohanatest')
       end
 
+      it 'displays missing attribute errors' do
+        expect(page).to have_content "Password can't be blank"
+      end
+
       it_behaves_like 'does not reveal existing email'
     end
 
@@ -133,6 +137,19 @@ feature 'Signing up' do
       before(:each) do
         sign_up('Moncef', 'moncef@foo.com', 'ohanatest', 'ohanatest')
         sign_up('Moncef', 'moncef@foo.com', 'foo', 'foo')
+      end
+
+      it_behaves_like 'does not reveal existing email'
+    end
+
+    context 'when email is missing' do
+      before(:each) do
+        sign_up('Moncef', 'moncef@foo.com', 'ohanatest', 'ohanatest')
+        sign_up('Moncef', '', 'ohanatest', 'ohanatest')
+      end
+
+      it 'displays missing attribute errors' do
+        expect(page).to have_content "Email can't be blank"
       end
 
       it_behaves_like 'does not reveal existing email'

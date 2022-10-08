@@ -2,8 +2,8 @@
   .alert.alert-danger
     %h2 #{pluralize(admin.errors.count, 'error')} prohibited this admin from being saved:
     %ul
-      - admin.errors.each do |_attribute, message|
-        %li= message
+      - admin.errors.each do |error|
+        %li= error.message
 
 .inst-box
   %header

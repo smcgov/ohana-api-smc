@@ -20,8 +20,8 @@ module PrivateRegistration
   end
 
   def only_email_error_is_duplicate?
-    resource.errors.keys == [:email] &&
-      resource.errors[:email].uniq == ['has already been taken']
+    resource.errors.attribute_names == [:email] &&
+      resource.errors.messages_for(:email).uniq == ['has already been taken']
   end
 
   def process_private_registration
@@ -47,12 +47,16 @@ module PrivateRegistration
     clean_up_passwords resource
     @validatable = devise_mapping.validatable?
     @minimum_password_length = resource_class.password_length.min if @validatable
-    respond_with resource
+    render :new
   end
 
   def remove_has_already_been_taken_error
-    resource.errors.messages.delete_if do |attr, msg_array|
-      attr == :email && msg_array[0] == 'has already been taken'
+    previous_email_errors = resource.errors.messages_for(:email)
+    resource.errors.delete(:email)
+    previous_email_errors.each do |message|
+      next if message == 'has already been taken'
+
+      resource.errors.add(:email, message)
     end
   end
 end
