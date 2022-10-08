@@ -18,7 +18,7 @@ Bundler.require(*Rails.groups)
 
 module OhanaApi
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 6.1
     config.autoload_paths << Rails.root.join('lib')
 
     # don't generate RSpec tests for views and helpers
