@@ -6,5 +6,3 @@ Spring.watch(
   'config/application.yml',
   'config/settings.yml'
 )
-
-Spring.watch_method = :listen

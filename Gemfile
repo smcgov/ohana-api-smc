@@ -63,13 +63,13 @@ group :development do
   gem 'derailed'
   gem 'flamegraph'
   gem 'letter_opener'
+  gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler'
   gem 'reek'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen'
   gem 'stackprof'
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
-  gem 'web-console'
+  gem 'web-console', '>= 4.1.0'
 end
