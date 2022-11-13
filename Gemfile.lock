@@ -89,7 +89,7 @@ GEM
     bummr (0.6.0)
       rainbow
       thor
-    capybara (3.37.1)
+    capybara (3.38.0)
       addressable
       matrix
       mini_mime (>= 0.1.3)
