@@ -233,7 +233,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
-    rabl (0.16.0)
+    rabl (0.16.1)
       activesupport (>= 2.3.14)
     racc (1.6.0)
     rack (2.2.4)
