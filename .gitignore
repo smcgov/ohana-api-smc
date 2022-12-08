@@ -64,3 +64,5 @@ script/restore
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+ohana-api-smc.sublime-workspace
