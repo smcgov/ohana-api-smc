@@ -231,7 +231,7 @@ GEM
     public_suffix (5.0.0)
     puma (6.0.2)
       nio4r (~> 2.0)
-    pundit (2.2.0)
+    pundit (2.3.0)
       activesupport (>= 3.0.0)
     rabl (0.16.1)
       activesupport (>= 2.3.14)
