@@ -62,14 +62,6 @@ describe Location do
   it { is_expected.not_to allow_value(%w[moncef.blahcom]).for(:admin_emails) }
   it { is_expected.not_to allow_value([' foo @bar.com']).for(:admin_emails) }
 
-  it do
-    is_expected.to enumerize(:accessibility).
-      in(
-        :cd, :deaf_interpreter, :disabled_parking, :elevator, :ramp, :restroom,
-        :tape_braille, :tty, :wheelchair, :wheelchair_van
-      )
-  end
-
   describe 'invalidations' do
     context 'non-virtual and without an address' do
       subject { build(:location, address: nil) }
@@ -268,6 +260,31 @@ describe Location do
       loc.organization_id = org.id
 
       expect(loc).to be_valid
+    end
+  end
+
+  describe 'accessibility' do
+    it 'allows a specific set of values' do
+      valid_accessibilities = %i[cd deaf_interpreter disabled_parking elevator ramp restroom tape_braille tty wheelchair wheelchair_van]
+      valid_accessibilities.each do |accessibility|
+        location = build(:location, accessibility: [accessibility])
+        expect(location).to be_valid
+      end
+    end
+
+    it 'allows multiple valid values' do
+      valid_accessibilities = %i[deaf_interpreter disabled_parking]
+      location = build(:location, accessibility: valid_accessibilities)
+      expect(location).to be_valid
+    end
+
+    it 'converts invalid values to nil' do
+      invalid_accessibilities = %w[open closed]
+      location = build(:location)
+      invalid_accessibilities.each do |accessibility|
+        location = build(:location, accessibility: [accessibility])
+        expect(location).not_to be_valid
+      end
     end
   end
 end
