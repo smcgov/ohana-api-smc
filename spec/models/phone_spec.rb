@@ -3,8 +3,6 @@ require 'rails_helper'
 describe Phone do
   subject { build(:phone) }
 
-  it { is_expected.to_not be_valid }
-
   it { is_expected.to belong_to(:location).optional.touch(true).inverse_of(:phones) }
   it { is_expected.to belong_to(:contact).optional.touch(true).inverse_of(:phones) }
   it { is_expected.to belong_to(:service).optional.touch(true).inverse_of(:phones) }
@@ -21,8 +19,6 @@ describe Phone do
     is_expected.not_to allow_value('703-').for(:number).
       with_message('703- is not a valid US phone or fax number')
   end
-
-  it { is_expected.to enumerize(:number_type).in(:fax, :hotline, :sms, :tty, :voice) }
 
   it { is_expected.to validate_numericality_of(:extension) }
 
@@ -43,6 +39,26 @@ describe Phone do
       phone = build(:phone)
       expect(phone).to_not be_valid
       expect(phone.errors.messages[:base][0]).to include 'is missing a parent'
+    end
+  end
+
+  describe 'number_type' do
+    it 'allows a specific set of values' do
+      valid_number_types = %w[fax hotline sms tty voice]
+      location = build(:location)
+      valid_number_types.each do |number_type|
+        phone = build(:phone, location: location, number_type: number_type)
+        expect(phone).to be_valid
+      end
+    end
+
+    it 'converts invalid values to nil' do
+      invalid_number_types = %w[emergency mobile landline]
+      location = build(:location)
+      invalid_number_types.each do |number_type|
+        phone = build(:phone, location: location, number_type: number_type)
+        expect(phone.number_type).to be_nil
+      end
     end
   end
 end

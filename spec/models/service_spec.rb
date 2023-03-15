@@ -51,8 +51,6 @@ describe Service do
 
   it { is_expected.to allow_value(%w[Belmont Atherton]).for(:service_areas) }
 
-  it { is_expected.to enumerize(:status).in(:active, :defunct, :inactive) }
-
   describe 'array validations' do
     it 'raises an error when the attribute is not an array' do
       service = build(
@@ -133,6 +131,26 @@ describe Service do
 
     it 'touches location when category is added' do
       expect(@location.updated_at).to_not eq @old_timestamp
+    end
+  end
+
+  describe 'status' do
+    it 'allows a specific set of values' do
+      valid_statuses = %w[active defunct inactive]
+      location = build(:location)
+      valid_statuses.each do |status|
+        service = build(:service, location: location, status: status)
+        expect(service).to be_valid
+      end
+    end
+
+    it 'converts invalid values to nil' do
+      invalid_statuses = %w[open closed]
+      location = build(:location)
+      invalid_statuses.each do |status|
+        service = build(:service, location: location, status: status)
+        expect(service.status).to be_nil
+      end
     end
   end
 end
