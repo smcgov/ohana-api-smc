@@ -294,7 +294,7 @@ GEM
     readthis (2.2.0)
       connection_pool (~> 2.1)
       redis (>= 3.0, < 5.0)
-    redis (4.8.0)
+    redis (4.8.1)
     reek (6.1.4)
       kwalify (~> 0.7.0)
       parser (~> 3.2.0)
