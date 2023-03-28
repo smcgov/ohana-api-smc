@@ -4,16 +4,16 @@ module Api
       include TokenValidator
       include CustomErrors
 
-      def update
-        location = Location.find(params[:location_id])
-        location.update!(address_attributes: address_params.merge!(id: params[:id]))
-        render json: location.address, status: :ok
-      end
-
       def create
         location = Location.find(params[:location_id])
         address = location.create_address!(address_params) if location.address.blank?
         render json: address, status: :created
+      end
+
+      def update
+        location = Location.find(params[:location_id])
+        location.update!(address_attributes: address_params.merge!(id: params[:id]))
+        render json: location.address, status: :ok
       end
 
       def destroy

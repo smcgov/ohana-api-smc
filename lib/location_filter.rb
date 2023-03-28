@@ -21,7 +21,7 @@ class LocationFilter
     raise Exceptions::InvalidRadius if radius.to_d == 0.0.to_d
 
     # radius must be between 0.1 miles and 50 miles
-    [[0.1, radius.to_f].max, 50].min
+    radius.to_f.clamp(0.1, 50)
   end
 
   private

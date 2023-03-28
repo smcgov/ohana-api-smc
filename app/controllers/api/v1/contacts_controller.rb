@@ -10,16 +10,16 @@ module Api
         render json: contacts, status: :ok
       end
 
-      def update
-        contact = Contact.find(params[:id])
-        contact.update!(contact_params)
-        render json: contact, status: :ok
-      end
-
       def create
         location = Location.find(params[:location_id])
         contact = location.contacts.create!(contact_params)
         render json: contact, status: :created
+      end
+
+      def update
+        contact = Contact.find(params[:id])
+        contact.update!(contact_params)
+        render json: contact, status: :ok
       end
 
       def destroy

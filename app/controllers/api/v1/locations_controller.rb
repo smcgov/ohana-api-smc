@@ -27,12 +27,6 @@ module Api
         render json: location, status: :ok if stale?(location, public: true)
       end
 
-      def update
-        location = Location.find(params[:id])
-        location.update!(location_params)
-        render json: location, status: :ok
-      end
-
       def create
         org = Organization.find(params[:organization_id])
         location = org.locations.create!(location_params)
@@ -42,6 +36,12 @@ module Api
           slug: location.slug
         }
         render json: response_hash, status: :created, location: [:api, location]
+      end
+
+      def update
+        location = Location.find(params[:id])
+        location.update!(location_params)
+        render json: location, status: :ok
       end
 
       def destroy

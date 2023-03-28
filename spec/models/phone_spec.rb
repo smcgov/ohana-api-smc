@@ -47,7 +47,7 @@ describe Phone do
       valid_number_types = %w[fax hotline sms tty voice]
       location = build(:location)
       valid_number_types.each do |number_type|
-        phone = build(:phone, location: location, number_type: number_type)
+        phone = build(:phone, location:, number_type:)
         expect(phone).to be_valid
       end
     end
@@ -56,7 +56,7 @@ describe Phone do
       invalid_number_types = %w[emergency mobile landline]
       location = build(:location)
       invalid_number_types.each do |number_type|
-        phone = build(:phone, location: location, number_type: number_type)
+        phone = build(:phone, location:, number_type:)
         expect(phone.number_type).to be_nil
       end
     end

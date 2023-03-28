@@ -8,29 +8,15 @@ class Admin
                    page(params[:page]).per(params[:per_page])
     end
 
+    def new
+      @location = Location.new
+      authorize @location
+    end
+
     def edit
       @location = Location.find(params[:id])
       @org = @location.organization
 
-      authorize @location
-    end
-
-    def update
-      @location = Location.find(params[:id])
-      @org = @location.organization
-
-      authorize @location
-
-      if @location.update(location_params)
-        redirect_to [:admin, @location],
-                    notice: 'Location was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    def new
-      @location = Location.new
       authorize @location
     end
 
@@ -44,6 +30,20 @@ class Admin
         redirect_to [:admin, @location], notice: 'Location was successfully created.'
       else
         render :new
+      end
+    end
+
+    def update
+      @location = Location.find(params[:id])
+      @org = @location.organization
+
+      authorize @location
+
+      if @location.update(location_params)
+        redirect_to [:admin, @location],
+                    notice: 'Location was successfully updated.'
+      else
+        render :edit
       end
     end
 

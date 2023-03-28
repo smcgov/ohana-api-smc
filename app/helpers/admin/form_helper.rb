@@ -9,7 +9,7 @@ class Admin
       link_to(
         name,
         '#',
-        class: 'add-fields btn btn-primary', data: { id: id, fields: fields.gsub('\n', '') }
+        class: 'add-fields btn btn-primary', data: { id:, fields: fields.gsub('\n', '') }
       )
     end
 
@@ -19,7 +19,7 @@ class Admin
       link_to(
         name,
         '#',
-        class: 'add-array-fields btn btn-primary', data: { id: id, fields: fields.gsub('\n', '') }
+        class: 'add-array-fields btn btn-primary', data: { id:, fields: fields.gsub('\n', '') }
       )
     end
 

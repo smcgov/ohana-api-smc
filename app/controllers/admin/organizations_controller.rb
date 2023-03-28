@@ -15,28 +15,14 @@ class Admin
       end
     end
 
+    def new
+      @organization = Organization.new
+      authorize @organization
+    end
+
     def edit
       @organization = Organization.find(params[:id])
 
-      authorize @organization
-    end
-
-    def update
-      @organization = Organization.find(params[:id])
-
-      authorize @organization
-      preprocess_organization_params
-
-      if @organization.update(org_params)
-        redirect_to [:admin, @organization],
-                    notice: 'Organization was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    def new
-      @organization = Organization.new
       authorize @organization
     end
 
@@ -50,6 +36,20 @@ class Admin
                     notice: 'Organization was successfully created.'
       else
         render :new
+      end
+    end
+
+    def update
+      @organization = Organization.find(params[:id])
+
+      authorize @organization
+      preprocess_organization_params
+
+      if @organization.update(org_params)
+        redirect_to [:admin, @organization],
+                    notice: 'Organization was successfully updated.'
+      else
+        render :edit
       end
     end
 

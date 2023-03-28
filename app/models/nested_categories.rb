@@ -53,6 +53,6 @@ class NestedCategories
   end
 
   def run_recursion(categories)
-    self.class.new(taxonomy_ids: taxonomy_ids, view: view, categories: categories).call
+    self.class.new(taxonomy_ids:, view:, categories:).call
   end
 end

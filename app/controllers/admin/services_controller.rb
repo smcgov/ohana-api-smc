@@ -10,10 +10,31 @@ class Admin
                   page(params[:page]).per(params[:per_page])
     end
 
+    def new
+      @location = Location.find(params[:location_id])
+      taxonomy_ids = []
+
+      authorize @location
+
+      @service = Service.new
+      @nested_categories = NestedCategories.new(taxonomy_ids:, view: view_context).call
+    end
+
     def edit
       assign_location_service_and_taxonomy_ids
 
       authorize @location
+    end
+
+    def create
+      prepare_and_authorize_service_creation
+
+      if @service.save
+        redirect_to admin_location_url(@location),
+                    notice: "Service '#{@service.name}' was successfully created."
+      else
+        render :new
+      end
     end
 
     def update
@@ -27,27 +48,6 @@ class Admin
                     notice: 'Service was successfully updated.'
       else
         render :edit
-      end
-    end
-
-    def new
-      @location = Location.find(params[:location_id])
-      taxonomy_ids = []
-
-      authorize @location
-
-      @service = Service.new
-      @nested_categories = NestedCategories.new(taxonomy_ids: taxonomy_ids, view: view_context).call
-    end
-
-    def create
-      prepare_and_authorize_service_creation
-
-      if @service.save
-        redirect_to admin_location_url(@location),
-                    notice: "Service '#{@service.name}' was successfully created."
-      else
-        render :new
       end
     end
 
@@ -115,7 +115,7 @@ class Admin
       @service = Service.find(params[:id])
       @location = Location.find(params[:location_id])
       taxonomy_ids = @service.categories.pluck(:taxonomy_id)
-      @nested_categories = NestedCategories.new(taxonomy_ids: taxonomy_ids, view: view_context).call
+      @nested_categories = NestedCategories.new(taxonomy_ids:, view: view_context).call
     end
 
     # rubocop:disable Metrics/MethodLength

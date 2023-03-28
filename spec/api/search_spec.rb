@@ -69,10 +69,10 @@ describe "GET 'search'" do
       end
     end
 
-    context 'with radius too big but within range' do
-      it 'returns the farmers market name' do
+    context 'with radius greater than 50' do
+      it 'uses a radius of 50' do
         get api_search_index_url(
-          location: 'san gregorio, ca', radius: 50, subdomain: api_subdomain
+          location: 'san gregorio, ca', radius: 100, subdomain: api_subdomain
         )
         expect(json.first['name']).to eq('Belmont Farmers Market')
       end
