@@ -10,16 +10,16 @@ module Api
         render json: phones, status: :ok
       end
 
-      def update
-        phone = Phone.find(params[:id])
-        phone.update!(phone_params)
-        render json: phone, status: :ok
-      end
-
       def create
         location = Location.find(params[:location_id])
         phone = location.phones.create!(phone_params)
         render json: phone, status: :created
+      end
+
+      def update
+        phone = Phone.find(params[:id])
+        phone.update!(phone_params)
+        render json: phone, status: :ok
       end
 
       def destroy

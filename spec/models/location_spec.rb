@@ -265,7 +265,8 @@ describe Location do
 
   describe 'accessibility' do
     it 'allows a specific set of values' do
-      valid_accessibilities = %i[cd deaf_interpreter disabled_parking elevator ramp restroom tape_braille tty wheelchair wheelchair_van]
+      valid_accessibilities = %i[cd deaf_interpreter disabled_parking elevator ramp restroom
+                                 tape_braille tty wheelchair wheelchair_van]
       valid_accessibilities.each do |accessibility|
         location = build(:location, accessibility: [accessibility])
         expect(location).to be_valid

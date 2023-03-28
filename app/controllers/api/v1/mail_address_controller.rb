@@ -4,18 +4,18 @@ module Api
       include TokenValidator
       include CustomErrors
 
-      def update
-        mail_address = MailAddress.find(params[:id])
-        mail_address.update!(mail_address_params)
-        render json: mail_address, status: :ok
-      end
-
       def create
         location = Location.find(params[:location_id])
         if location.mail_address.blank?
           mail_address = location.create_mail_address!(mail_address_params)
         end
         render json: mail_address, status: :created
+      end
+
+      def update
+        mail_address = MailAddress.find(params[:id])
+        mail_address.update!(mail_address_params)
+        render json: mail_address, status: :ok
       end
 
       def destroy

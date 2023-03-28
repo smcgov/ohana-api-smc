@@ -17,15 +17,15 @@ module Api
         render json: org, status: :ok
       end
 
+      def create
+        org = Organization.create!(org_params)
+        render json: org, status: :created, location: [:api, org]
+      end
+
       def update
         org = Organization.find(params[:id])
         org.update!(org_params)
         render json: org, status: :ok
-      end
-
-      def create
-        org = Organization.create!(org_params)
-        render json: org, status: :created, location: [:api, org]
       end
 
       def destroy

@@ -45,7 +45,7 @@ class ArrayValidator < ActiveModel::EachValidator
   end
 
   def create_validator(key, args)
-    opts = { attributes: attributes }
+    opts = { attributes: }
     opts.merge!(args) if args.is_a?(Hash)
     validator_class(key).new(opts).tap(&:check_validity!)
   end

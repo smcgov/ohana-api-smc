@@ -11,7 +11,7 @@ FactoryBot.define do
 
     factory :user_with_app do
       after(:create) do |user|
-        create(:api_application, user: user)
+        create(:api_application, user:)
       end
     end
   end

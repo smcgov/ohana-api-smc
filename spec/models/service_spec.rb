@@ -139,7 +139,7 @@ describe Service do
       valid_statuses = %w[active defunct inactive]
       location = build(:location)
       valid_statuses.each do |status|
-        service = build(:service, location: location, status: status)
+        service = build(:service, location:, status:)
         expect(service).to be_valid
       end
     end
@@ -148,7 +148,7 @@ describe Service do
       invalid_statuses = %w[open closed]
       location = build(:location)
       invalid_statuses.each do |status|
-        service = build(:service, location: location, status: status)
+        service = build(:service, location:, status:)
         expect(service.status).to be_nil
       end
     end

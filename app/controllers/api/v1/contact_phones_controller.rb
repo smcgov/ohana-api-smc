@@ -4,16 +4,16 @@ module Api
       include TokenValidator
       include CustomErrors
 
-      def update
-        phone = Phone.find(params[:id])
-        phone.update!(phone_params)
-        render json: phone, status: :ok
-      end
-
       def create
         contact = Contact.find(params[:contact_id])
         phone = contact.phones.create!(phone_params)
         render json: phone, status: :created
+      end
+
+      def update
+        phone = Phone.find(params[:id])
+        phone.update!(phone_params)
+        render json: phone, status: :ok
       end
 
       def destroy

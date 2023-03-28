@@ -12,7 +12,7 @@ Geocoder.configure(
   lookup: :google,
   api_key: ENV.fetch('GOOGLE_GEOCODING_API_KEY', nil),
   use_https: true,
-  cache: cache,
+  cache:,
   always_raise: [
     Geocoder::OverQueryLimitError,
     Geocoder::RequestDenied,

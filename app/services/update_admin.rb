@@ -11,7 +11,7 @@ class UpdateAdmin
   end
 
   def call
-    @admin = Admin.find_by(email: email)
+    @admin = Admin.find_by(email:)
 
     if valid?
       @admin.update(super_admin: true)

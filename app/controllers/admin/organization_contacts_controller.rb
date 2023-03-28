@@ -3,33 +3,19 @@ class Admin
     before_action :authenticate_admin!
     layout 'admin'
 
-    def edit
-      @organization = Organization.find(params[:organization_id])
-      @contact = Contact.find(params[:id])
-
-      authorize @contact
-    end
-
-    def update
-      @contact = Contact.find(params[:id])
-      @organization = Organization.find(params[:organization_id])
-
-      authorize @contact
-
-      if @contact.update(contact_params)
-        flash[:notice] = 'Contact was successfully updated.'
-        redirect_to [:admin, @organization, @contact]
-      else
-        render :edit
-      end
-    end
-
     def new
       @organization = Organization.find(params[:organization_id])
 
       authorize @organization
 
       @contact = Contact.new
+    end
+
+    def edit
+      @organization = Organization.find(params[:organization_id])
+      @contact = Contact.find(params[:id])
+
+      authorize @contact
     end
 
     def create
@@ -43,6 +29,20 @@ class Admin
         redirect_to admin_organization_url(@organization)
       else
         render :new
+      end
+    end
+
+    def update
+      @contact = Contact.find(params[:id])
+      @organization = Organization.find(params[:organization_id])
+
+      authorize @contact
+
+      if @contact.update(contact_params)
+        flash[:notice] = 'Contact was successfully updated.'
+        redirect_to [:admin, @organization, @contact]
+      else
+        render :edit
       end
     end
 

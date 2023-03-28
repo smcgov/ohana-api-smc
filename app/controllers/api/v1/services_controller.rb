@@ -16,16 +16,16 @@ module Api
         render json: services, status: :ok
       end
 
-      def update
-        service = Service.find(params[:id])
-        service.update!(service_params)
-        render json: service, status: :ok
-      end
-
       def create
         location = Location.find(params[:location_id])
         service = location.services.create!(service_params)
         render json: service, status: :created
+      end
+
+      def update
+        service = Service.find(params[:id])
+        service.update!(service_params)
+        render json: service, status: :ok
       end
 
       def destroy

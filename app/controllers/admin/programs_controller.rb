@@ -8,27 +8,14 @@ class Admin
                   page(params[:page]).per(params[:per_page])
     end
 
+    def new
+      @program = Program.new
+      authorize @program
+    end
+
     def edit
       @program = Program.find(params[:id])
 
-      authorize @program
-    end
-
-    def update
-      @program = Program.find(params[:id])
-
-      authorize @program
-
-      if @program.update(program_params)
-        redirect_to [:admin, @program],
-                    notice: 'Program was successfully updated.'
-      else
-        render :edit
-      end
-    end
-
-    def new
-      @program = Program.new
       authorize @program
     end
 
@@ -43,6 +30,19 @@ class Admin
                     notice: 'Program was successfully created.'
       else
         render :new
+      end
+    end
+
+    def update
+      @program = Program.find(params[:id])
+
+      authorize @program
+
+      if @program.update(program_params)
+        redirect_to [:admin, @program],
+                    notice: 'Program was successfully updated.'
+      else
+        render :edit
       end
     end
 
