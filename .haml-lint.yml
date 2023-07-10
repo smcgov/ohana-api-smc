@@ -10,11 +10,12 @@ linters:
     # These cops are incredibly noisy when it comes to HAML templates, so we
     # ignore them.
     ignored_cops:
-      - Lint/BlockAlignment
-      - Lint/EndAlignment
+      - Layout/BlockAlignment
+      - Layout/EndAlignment
       - Lint/Void
-      - Layout/AlignParameters
+      - Layout/HashAlignment
       - Layout/ElseAlignment
+      - Layout/ArgumentAlignment
       - Layout/EmptyLineAfterGuardClause
       - Layout/EndOfLine
       - Layout/IndentationWidth
