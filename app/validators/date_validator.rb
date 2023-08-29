@@ -26,7 +26,8 @@ class DateValidator < ActiveModel::EachValidator
     return valid_date_from_hash?(date) if date.is_a?(Hash)
     return false unless valid_date_format?(date)
     return Date.valid_date?(*split_date(date).rotate(2)) if month_day? || date.include?(',')
-    return Date.valid_date?(*split_date(date).reverse) if day_month?
+
+    Date.valid_date?(*split_date(date).reverse) if day_month?
   end
 
   def valid_date_format?(date)

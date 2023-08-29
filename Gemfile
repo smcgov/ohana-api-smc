@@ -50,9 +50,9 @@ group :test do
   gem 'haml_lint'
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'simplecov', require: false
-  gem 'webdrivers'
   gem 'webmock'
 end
 

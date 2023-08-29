@@ -34,7 +34,8 @@ module PrivateRegistration
 
   def after_registration_url_for(resource)
     return new_admin_session_url if resource.is_a?(Admin)
-    return new_user_session_url if resource.is_a?(User)
+
+    new_user_session_url if resource.is_a?(User)
   end
 
   def process_successful_registration

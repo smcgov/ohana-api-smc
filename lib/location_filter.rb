@@ -34,7 +34,8 @@ class LocationFilter
     if location.present? && result_for(location).present?
       return result_for(location).first.coordinates
     end
-    return validated_coordinates(lat_lng) if lat_lng.present?
+
+    validated_coordinates(lat_lng) if lat_lng.present?
   end
 
   def validated_coordinates(lat_lng)
