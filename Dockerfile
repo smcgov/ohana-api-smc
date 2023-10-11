@@ -6,7 +6,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /usr/local/node \
-    && curl -L https://nodejs.org/dist/v4.4.7/node-v4.4.7-linux-x64.tar.xz | tar Jx -C /usr/local/node --strip-components=1
+    && curl -L https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz | tar Jx -C /usr/local/node --strip-components=1
 RUN ln -s ../node/bin/node /usr/local/bin/
 
 WORKDIR /ohana-api
