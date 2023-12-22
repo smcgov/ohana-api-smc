@@ -393,7 +393,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     skylight (6.0.1)
       activesupport (>= 5.2.0)
-    smarter_csv (1.8.5)
+    smarter_csv (1.9.3)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
