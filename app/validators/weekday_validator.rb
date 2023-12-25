@@ -30,7 +30,7 @@ class WeekdayValidator < ActiveModel::EachValidator
   end
 
   def starts_with_weekday_abbreviation?(value)
-    WEEKDAY_ABBREVIATIONS.select { |abbr| value.start_with?(abbr) }.present?
+    WEEKDAY_ABBREVIATIONS.any? { |abbr| value.start_with?(abbr) }
   end
 
   def convert_value_to_integer(record, attribute, value)

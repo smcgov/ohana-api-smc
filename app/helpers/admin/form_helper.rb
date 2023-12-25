@@ -30,7 +30,7 @@ class Admin
     end
 
     def field_contains_errors?(model, attribute, field)
-      model.errors[attribute].select { |error| error.include?(field) }.present?
+      model.errors[attribute].any? { |error| error.include?(field) }
     end
 
     # rubocop:disable Metrics/MethodLength
