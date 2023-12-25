@@ -36,7 +36,7 @@ module DefaultHeaders
   end
 
   def get(uri, params = {}, session = {})
-    super uri, params:, headers: { 'HTTP_USER_AGENT' => 'Rspec' }.merge(session)
+    super(uri, params:, headers: { 'HTTP_USER_AGENT' => 'Rspec' }.merge(session))
   end
 
   def delete(uri, params = {}, session = {})

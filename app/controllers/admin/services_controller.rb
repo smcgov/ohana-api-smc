@@ -83,9 +83,7 @@ class Admin
       prog_id = service_params[:program_id]
       @service.program = nil and return if prog_id.blank?
 
-      if program_ids_for(@service).select { |id| id == prog_id.to_i }.present?
-        @service.program_id = prog_id
-      end
+      @service.program_id = prog_id if program_ids_for(@service).any? { |id| id == prog_id.to_i }
     end
 
     def program_ids_for(service)
