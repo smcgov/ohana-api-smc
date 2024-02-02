@@ -18,8 +18,10 @@ Bundler.require(*Rails.groups)
 
 module OhanaApi
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
@@ -30,7 +32,10 @@ module OhanaApi
       g.helper_specs false
     end
 
-    # Settings in config/environments/* take precedence over those specified here.
+    # Configuration for the application, engines, and railties goes here.
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
@@ -40,6 +45,9 @@ module OhanaApi
     config.time_zone = 'Pacific Time (US & Canada)'
 
     # config.eager_load_paths << Rails.root.join('extras')
+
+    # Don't generate system test files.
+    config.generators.system_tests = nil
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

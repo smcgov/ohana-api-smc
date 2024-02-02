@@ -1,7 +1,7 @@
 class Organization < ApplicationRecord
   default_scope { order('id DESC') }
 
-  has_many :locations, dependent: :destroy
+  has_many :locations, dependent: :destroy, autosave: true
   has_many :programs, dependent: :destroy
   has_many :contacts, dependent: :destroy
 

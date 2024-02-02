@@ -56,6 +56,7 @@ class Admin
     def destroy
       organization = Organization.find(params[:id])
       authorize organization
+      organization.locations.each(&:mark_for_destruction)
       organization.destroy
       redirect_to admin_organizations_url
     end

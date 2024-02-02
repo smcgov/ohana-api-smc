@@ -21,6 +21,8 @@ class Address < ApplicationRecord
   private
 
   def reset_location_coordinates
+    return if location.marked_for_destruction?
+
     location.update(latitude: nil, longitude: nil)
   end
 end
