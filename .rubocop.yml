@@ -63,6 +63,7 @@ Layout/LineLength:
     - config/initializers/content_security_policy.rb
     - config/environments/production.rb
     - config/initializers/new_framework_defaults_6_0.rb
+    - config/initializers/cookie_rotator.rb
 
 Metrics/MethodLength:
   Description: Avoid methods longer than 10 lines of code.
