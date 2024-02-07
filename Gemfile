@@ -28,17 +28,17 @@ gem 'redis'
 gem 'sassc-rails', '~> 2.1'
 gem 'scout_apm'
 gem 'select2-rails', '~> 3.5'
-gem 'sentry-rails', '~> 4.8.1'
-gem 'sentry-ruby', '~> 4.8.1'
+gem 'sentry-rails', '~> 5.16'
+gem 'sentry-ruby', '~> 5.16'
 gem 'skylight'
 gem 'uglifier', '>= 1.3.0'
 
 group :test, :development do
   gem 'bullet'
-  gem 'factory_bot_rails', '~> 5.2.0'
+  gem 'factory_bot_rails', '~> 6.4'
 
   gem 'rspec-its'
-  gem 'rspec-rails', '~> 5.1'
+  gem 'rspec-rails', '~> 6.1'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'smarter_csv'
@@ -46,12 +46,12 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner', '~> 1.8.4'
+  gem 'database_cleaner', '~> 2.0'
   gem 'haml_lint'
   gem 'rails-controller-testing'
   gem 'rubocop-rspec'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 4.3'
+  gem 'shoulda-matchers', '~> 6.1'
   gem 'simplecov', require: false
   gem 'webmock'
 end
