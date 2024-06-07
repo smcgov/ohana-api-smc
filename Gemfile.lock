@@ -415,7 +415,7 @@ GEM
     scout_apm (5.3.8)
       parser
     select2-rails (3.5.11)
-    selenium-webdriver (4.18.1)
+    selenium-webdriver (4.21.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
