@@ -195,7 +195,7 @@ GEM
     flamegraph (0.9.5)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
-    geocoder (1.8.3)
+    geocoder (1.8.4)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     get_process_mem (0.2.5)
